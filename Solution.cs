@@ -24,7 +24,33 @@ class Result
 
     public static int lonelyinteger(List<int> a)
     {
-        return 0;
+        List<int> b = a;
+        List<int> temp = new List<int>();
+        int count = a.Count;
+        int check = 0, index = 1;
+
+        for(int i=0; i<count; i++)
+        {
+            check = 0;
+            for(int j=0; j<count; j++)
+            {
+                if(a[i] == b[j])
+                {
+                    check++;
+                }
+            }
+            temp.Add(check);
+        }
+
+        for(int i=0; i<count; i++)
+        {
+            if(temp[i] == 1)
+            {
+                index = i;
+            }
+        }
+
+        return a[index];
     }
 
 }
@@ -40,6 +66,8 @@ class Solution
         List<int> a = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(aTemp => Convert.ToInt32(aTemp)).ToList();
 
         int result = Result.lonelyinteger(a);
+
+        Console.WriteLine(result.ToString());
 
         //textWriter.WriteLine(result);
 
